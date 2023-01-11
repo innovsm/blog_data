@@ -1,0 +1,11 @@
+certifi
+click
+Flask
+Flask-SQLAlchemy
+gunicorn
+Jinja2
+numpy
+pandas
+Werkzeug
+beautifulsoup4
+mysql

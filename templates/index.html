@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+
+    </head>
+    <body>
+
+        <div id="container">
+            {% for i in data_list %}
+            <div>
+                <h2>{{ i[2] }}</h2><br>
+                <!-- main blog will come here -->
+                {{i[0]}}
+
+
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
