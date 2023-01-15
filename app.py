@@ -7,11 +7,10 @@ app = Flask(__name__)
 # =================================  all the bang-bang happens here =================================
 
 
-@app.route('/')  # main blog site
-
-def blog_data():  # giving all the  blogs
+def update_dataframe():
 
     conn = mysql.connector.connect( 
+
         host="sql6.freesqldatabase.com",
         user="sql6589077",
         password="BEK9Q8jdGE",
@@ -20,7 +19,19 @@ def blog_data():  # giving all the  blogs
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM blog_data")
     data = cursor.fetchall()
-    return render_template("index.html",data_list = data[::-1])
+    data_1 = pd.DataFrame(data,columns = ['text','topice','date'])
+    data_1.to_csv('blog_data.csv')
+    conn.close()
+    return "done"
+@app.route('/')  # main blog site
+
+def blog_data():  # giving all the  blogs
+    data_raw = pd.read_csv('blog_data.csv')
+    list_1 = list(data_raw['text'])
+    list_2 = list(data_raw['topice'])
+    list_3 = list(data_raw['date'])
+    x = list(tuple(zip(list_1, list_2, list_3)))
+    return render_template("index.html",data_list = x[::-1])
     
 
 
@@ -54,6 +65,8 @@ def insert():
         data_2 = request.form['blog_data']
         date_index = str(datetime.datetime.today().date())
         # connecting to mysql server
+
+        
         conn = mysql.connector.connect( 
 
             host="sql6.freesqldatabase.com",
@@ -62,13 +75,21 @@ def insert():
             database="sql6589077"
             
             )
+
         cursor = conn.cursor()
+    
         query = "INSERT INTO blog_data (text,topice,date_1) VALUES (%s,%s,%s)"
         values  = (data_2,data_1,date_index)
         try:
             cursor.execute(query,values)
             conn.commit()
-            cursor.close()
+    
+            try:
+                x = update_dataframe()
+                print(x)
+                cursor.close()
+            except:
+                print("Failed to update dataframe")
             return "data successfully inserted, hurray!!"
         except:
             return "data was not inserted , sorry!"
@@ -90,6 +111,7 @@ def edit():
             delete_boolean = "no"
         new_topice = request.form['topice']
         # core logic for editing will come here
+    
         conn = mysql.connector.connect(
 
             host="sql6.freesqldatabase.com",
@@ -98,12 +120,25 @@ def edit():
             database="sql6589077"
 
         )
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM blog_data")
+        data = cursor.fetchall()
+        data_1 = pd.DataFrame(data,columns = ['text','topice','date'])
+        data_1.to_csv('blog_data.csv')
         if(delete_boolean == "yes"):
             cursor = conn.cursor()
             query = "DELETE FROM blog_data WHERE text = %s"
             values = (target_blog,)
             cursor.execute(query, values)
             conn.commit()
+            # updating dataframe after this step
+            try:
+                x = update_dataframe()
+                print(x)
+                cursor.close()
+            except:
+                print("Failed to update dataframe")
             conn.close()
             return "DELETION SUCCESSFULL"
 
@@ -113,6 +148,13 @@ def edit():
             values = (new_text, new_topice,target_blog)
             cursor.execute(query, values)
             conn.commit()
+            # updating dataframe after this step
+            try:
+                x = update_dataframe()
+                print(x)
+                cursor.close()
+            except:
+                print("Failed to update dataframe")
             conn.close()
             return "Article updated successfully !!"
 
@@ -128,5 +170,5 @@ def user():
 
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     app.run()
