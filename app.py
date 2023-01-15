@@ -26,11 +26,14 @@ def update_dataframe():
 @app.route('/')  # main blog site
 
 def blog_data():  # giving all the  blogs
-    data_raw = pd.read_csv('blog_data.csv')
-    list_1 = list(data_raw['text'])
-    list_2 = list(data_raw['topice'])
-    list_3 = list(data_raw['date'])
-    x = list(tuple(zip(list_1, list_2, list_3)))
+    try:
+        data_raw = pd.read_csv('blog_data.csv')
+        list_1 = list(data_raw['text'])
+        list_2 = list(data_raw['topice'])
+        list_3 = list(data_raw['date'])
+        x = list(tuple(zip(list_1, list_2, list_3)))
+    except:
+        x = []
     return render_template("index.html",data_list = x[::-1])
     
 
@@ -41,14 +44,14 @@ def superuser_1():
         username = request.form['username']
         password = request.form['password']
         if((username == "admin") and (password == "admin")):
-            conn = mysql.connector.connect( 
-                host="sql6.freesqldatabase.com",
-                user="sql6589077",
-                password="BEK9Q8jdGE",
-                database="sql6589077" 
+            conn = mysql.connector.connect(
+                host="sql.freedb.tech",
+                user="freedb_shubhanshumishra",
+                password="#Z!xR24U79T5635",
+                database="freedb_alfabetagama" 
                 )
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM blog_data")
+            cursor.execute("SELECT * FROM customers")
             data = cursor.fetchall()
             data_1 = pd.DataFrame(data,columns = ['text','topice','date'])
             data_1.to_csv('blog_data.csv')
@@ -66,19 +69,16 @@ def insert():
         date_index = str(datetime.datetime.today().date())
         # connecting to mysql server
 
-        
-        conn = mysql.connector.connect( 
-
-            host="sql6.freesqldatabase.com",
-            user="sql6589077",
-            password="BEK9Q8jdGE",
-            database="sql6589077"
-            
+        conn = mysql.connector.connect(
+            host="sql.freedb.tech",
+            user="freedb_shubhanshumishra",
+            password="#Z!xR24U79T5635",
+            database="freedb_alfabetagama" 
             )
 
         cursor = conn.cursor()
     
-        query = "INSERT INTO blog_data (text,topice,date_1) VALUES (%s,%s,%s)"
+        query = "INSERT INTO customers (text,topice,date) VALUES (%s,%s,%s)"
         values  = (data_2,data_1,date_index)
         try:
             cursor.execute(query,values)
@@ -111,24 +111,21 @@ def edit():
             delete_boolean = "no"
         new_topice = request.form['topice']
         # core logic for editing will come here
-    
         conn = mysql.connector.connect(
-
-            host="sql6.freesqldatabase.com",
-            user="sql6589077",
-            password="BEK9Q8jdGE",
-            database="sql6589077"
-
-        )
+            host="sql.freedb.tech",
+            user="freedb_shubhanshumishra",
+            password="#Z!xR24U79T5635",
+            database="freedb_alfabetagama" 
+            )
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM blog_data")
+        cursor.execute("SELECT * FROM customers")
         data = cursor.fetchall()
         data_1 = pd.DataFrame(data,columns = ['text','topice','date'])
         data_1.to_csv('blog_data.csv')
         if(delete_boolean == "yes"):
             cursor = conn.cursor()
-            query = "DELETE FROM blog_data WHERE text = %s"
+            query = "DELETE FROM customers WHERE text = %s"
             values = (target_blog,)
             cursor.execute(query, values)
             conn.commit()
@@ -144,7 +141,7 @@ def edit():
 
         else:
             cursor = conn.cursor()
-            query = "UPDATE blog_data SET text = %s ,topice = %s WHERE text =  %s "
+            query = "UPDATE customers SET text = %s ,topice = %s WHERE text =  %s "
             values = (new_text, new_topice,target_blog)
             cursor.execute(query, values)
             conn.commit()
