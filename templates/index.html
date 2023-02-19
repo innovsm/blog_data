@@ -1,307 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-        </title>
-    <style>
-       
-        html{
-            background-image : url('https://wallpapercave.com/dwp1x/wp2961106.jpg');
-            background-repeat:no-repeat;
-            background-size:cover;
-        }
-        }
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        ul,
-        img {
-          margin: 0;
-          padding: 0;
-        }
-        
-        //General Styling-----------------------------------------
-        body {
-          background: #e8eaf6;
-          font-family: 'Open-sans', Arial, sans-serif;
-          color: #333;
-        }
-        
-        a {
-          text-decoration: none;
-        }
-        
-        .active {
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.4);
-        }
-        
-        .mobile-menu {
-          display: none;
-          font-size: 30px;
-          margin-top: -20px;
-        }
-        .open-switch {
-          transform: rotate(360deg) ;//scale(0);
-          transform-origin: center;
-          transition: transform 300ms ease;
-        }
-        
-        .closed-switch {
-          transform: rotate(-360deg) ;//scale(1);
-          transform-origin: center;
-          transition: transform 300ms ease;
-        }
-        //Header and nav-------------------------------------------
-        header {
-          padding-top: 25px;
-          background: #ef5350;
-          height: 175px;
-          color: #37474f;
-        }
-        
-        nav {
-          display: flex;
-          justify-content: flex-end;
-        }
-        
-        .links {
-          ul {
-            margin: 10px 25px;
-            list-style: none;
-            a {
-              cursor: pointer;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-              border-radius: 2px;
-              background: #ef5350;
-              color: #fff;
-              font-size: 16px;
-              padding: 10px 20px;
-              transition: border 100ms ease-in, box-shadow 50ms ease;
-              &:hover {
-                border: 1px solid rgba(255, 255, 255, 0.4);
-                box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.4);
-              }
-              &:active {
-                box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.4);
-              }
-            }
-            li {
-              display: inline-block;
-              margin-right: 10px;
-              &:last-child {
-                margin-right: 0;
-              }
-            }
-          }
-        }
-        
-        
-        /*---------------Profile of Author--------------------*/
-        
-        .profile-row {
-          display: flex;
-          justify-content: center;
-          text-align: left;
-          .hacker4Chan {
-            margin: 0 auto;
-            margin-top: 50px;
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-    
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-          }
-          h1 {
-            padding: 20px 0;
-    
-            background-color: white;
-          }
-        }
-        
-        
-        /*--------posts section; where posts happen---------*/
-        
-        .post-row {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-top: 175px;
-        }
-        
-        .post {
-          margin: 0 auto;
-          background: #FFF;
-          margin-bottom: 20px;
-          width: 970px;
-          border-radius: 1px;
-          box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.4);
-          .anonymous {
-            margin: 25px 50px;
-            h6 {
-              color: #666;
-            }
-            p {
-              margin-top: 25px;
-              line-height: 1.25;
-            }
-            .pubDate {
-              margin-top: 50px;
-              font-size: 12px;
-              color: #aaa;
-            }
-          }
-        }
-        
-        .jumbo {
-          width: 100%;
-          background: {
-            //position: X Y;
-            position: 50% 85%;
-            size: cover;
-          }
-        }
-        
-        //Style for screens smaller than 1140px such as phones in landscape orientation
-        @media (max-width:1000px) {
-          //-----
-          .post {
-            width: 99%;
-          }
-          //------
-        }
-        
-        //Nav breakpoint 500px for most phones in portrait orientation
-        @media (max-width:500px) {
-          //-------
-          
-          .active {
-            border: none;
-          }
-          
-          .post {
-            width: 100%;
-            .anonymous {
-              margin: 25px 25px;
-              p{
-                font-size: 16px;
-                line-height: 1.5;
-              } 
-            }
-          }
-          
-          header {
-            transition: height 150ms ease-in; 
-            box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.4);
-            height: 105px//height when nav closed--
-          }
-          .open-header{
-            height: 200px;
-          }
-          
-          .mobile-menu {
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            -moz-tap-highlight-color: rgba(0, 0, 0, 0);
-            tap-highlight-color: rgba(0,0,0,0);
-            h4 {
-              transform: rotate(360deg);
-              transition: ease-in-out;
-              margin-right: 10px;
-              //border-radius: 50%;
-              padding: 10px 15px;
-              color: #fff;
-              z-index: 99;
-              transition: background 100ms;
-              &:active {
-                background: #fff;
-                border: dotted;
-                border-width: 2px;
-              }
-            }
-          }
-          
-          .profile {
-            transform: translateY(-195px);//position when nav closed--
-            transition: transform 150ms ease-in
-          }
-          .open-profile {
-            transform: translateY(-100px);//position when nav opened--
-          }
-          nav {
-            justify-content: center;
-            transform: translateY(-200px);//Closed navigation [mobile]--
-            transition: transform 150ms ease-in;
-          }
-          .open-nav {
-            transform: translateY(-55px);//opened navigation [mobile]--
-          }
-          
-          .links {
-            ul {
-              display: flex;
-              flex-direction: column;
-              text-align: center;
-              li {
-                margin-right: 0;
-                margin-bottom: 15px;
-              }
-              a {
-                padding: 10px 10px;
-                border: none;
-                &:hover {
-                  border: none;
-                  box-shadow: none;
-                }
-              }
-            }
-          }
-          // -------
-        }
-        #alfa{
-            color: white;
-            padding-right: 80px;
-        }
-    </style>
+<head>
+	<title>Website Under Construction</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #f5f5f5;
+			font-family: sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
 
-    </head>
-    <body>
-        
-<header>
+		img {
+			max-width: 100%;
+			height: auto;
+		}
 
-    <div class="profile-row">
-      <div class="profile">
-        <div class="hacker4Chan"><!--Profile Picture class is hacker4chan-->
-        </div>
-        <h1 id ="alfa">Shubhanshu Mishra</h1>
-      </div>
-    </div>
-  </header>
-
-        <div id="container">
-            {% for i in data_list %}
-            <div class="post-row">
-                <div class="post"><!--individual cards are 'posts'-->
-                  <div class="jumbo"></div>
-                  <div class="anonymous"><!--content inside posts are 'anonymous'-->
-                    <p>{{i[0]}}</p><br>
-                    
-            
-                    <p class="pubDate"><em>Published</em>  {{i[2]}}</p>
-                  </div>
-                </div>
-              </div>
-
- 
-            {% endfor %}
-        </div>
-    </body>
+		@media only screen and (max-width: 600px) {
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	</style>
+</head>
+<body>
+	 <img src = "https://media.giphy.com/media/cfGmVRsJI6wq6noGxP/giphy.gif">
+	<h1>Website Under Construction</h1>
+</body>
 </html>
