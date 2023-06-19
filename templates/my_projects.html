@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my projects</title>
+</head>
+<body>
+    <h1>my projects</h1>
+    <ul>
+        {% for i in data_1 %}
+        <div>
+            <!-- creating image  field -->
+
+            <b><h3>{{i[2]}}</h3></b>
+            <img src = "{{url_for('static', filename = 'images/'+ i[3] + '.jpg')}}" height = "300" widdth = "300"><br>
+            Project-link<a href = {{i[4]}}> click here </a> <br>
+            <h4> Description </h4>
+            {% for i1 in i[1].split("1-1") %}
+            <p>{{ i1 }}</p>
+            {% endfor %}
+            <br>
+
+        </div>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

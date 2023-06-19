@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            label {
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+
+            input[type="text"],
+            textarea {
+                width: 100%;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            textarea {
+                height: 100px;
+            }
+
+            input[type="submit"] {
+                margin-top: 10px;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/admin/projects" method="POST">
+            <div>
+                <label for="project_name">Enter Project Name:</label>
+                <input type = "text" name = "project_name"  id = "project_name"/>
+                <label for="input_link">Enter Project Link:</label>
+                <input type="text" name="project_link" id="input_link">
+                <br>
+                <label for="image_link">Enter Image Link:</label>
+                <input type="text" name="image_link" id="image_link">
+                <br>
+                <label for = "description_1"> Write Description </label>
+                <textarea  id = "description_1" name = "description"></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </body>
+</html>

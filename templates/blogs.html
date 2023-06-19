@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MY blog</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Additional CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 10px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .list-unstyled li p {
+      color: #333;
+    }
+
+    .list-item-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      display: none;
+    }
+
+    .list-item-popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .list-item-popup-content p {
+      margin-bottom: 10px;
+    }
+
+    /* .list-item-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Blogs</h1>
+    <ul class="list-unstyled">
+      {% for i in final_list %}
+      <li>
+          {% for i1 in i.split("1-1") %}
+            <p>{{ i1 }}</p>
+          {% endfor %}
+        <div class="list-item-popup">
+          <div class="list-item-popup-content">
+            <!-- <span class="list-item-popup-close">&times;</span> -->
+            {% for i1 in i.split("1-1") %}
+              <p>{{ i1 }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var lightColors = [
+    '#FFFFFF', // White
+    '#FAFAD2', // Very light yellow
+    '#F0FFF0', // Very light green
+    '#E6E6FA', // Very light blue
+    '#FFFACD', // Light pink
+    '#FFE4C4', // Light orange
+    '#F4FFAF', // Light yellow-green
+    '#D8E6EF', // Light blue-green
+    '#BDBDBD', // Light gray
+  ];
+  
+  $(document).ready(function() {
+    // Get the list items
+    var listItems = $('.list-unstyled li');
+  
+    // Set a timer to change the background color of each list item every 2 seconds
+    setInterval(function() {
+      // Get the current list item
+      var li = listItems.eq(Math.floor(Math.random() * listItems.length));
+  
+      // Generate a random background color from the list of light colors
+      var color = lightColors[Math.floor(Math.random() * lightColors.length)];
+  
+      // Set the background color of the list item
+      li.css('background-color', color);
+    }, 1000);
+    
+    $('.list-unstyled li').on('click', function() {
+      var popup = $(this).find('.list-item-popup');
+      popup.toggle();
+    });
+  });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My To-Do List</title>
+</head>
+<body>
+	<h1>My To-Do List</h1>
+	<form>
+		<label for="task">Add a task:</label>
+		<input type="text" id="task" name="task" required>
+		<button type="submit">Add</button>
+	</form>
+	<ul>
+	</ul>
+
+    <script>
+// Get the form and input field elements
+const form = document.querySelector('form');
+const input = document.querySelector('#task');
+
+// Get the list element where tasks will be added
+const list = document.querySelector('ul');
+
+// Add an event listener for the form submit event
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // prevent the default form submission behavior
+
+  // Get the input value and create a new list item element
+  const taskText = input.value;
+  const listItem = document.createElement('li');
+
+  // Create a span element to hold the task text
+  const taskSpan = document.createElement('span');
+  taskSpan.textContent = taskText;
+
+  // Add a click event listener to the task span
+  taskSpan.addEventListener('click', () => {
+    // Add a class to the span element to cross out the text
+    taskSpan.classList.add('completed');
+    // Remove the span element from the list after a short delay
+    setTimeout(() => {
+      listItem.remove();
+    }, 1000);
+  });
+
+  // Append the task span to the list item
+  listItem.appendChild(taskSpan);
+
+  // Append the new list item to the list element
+  list.appendChild(listItem);
+
+  // Clear the input field
+  input.value = '';
+});
+
+
+        </script>
+</body>
+</html>

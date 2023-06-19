@@ -1,35 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Website Under Construction</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #f5f5f5;
-			font-family: sans-serif;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-		}
-
-		img {
-			max-width: 100%;
-			height: auto;
-		}
-
-		@media only screen and (max-width: 600px) {
-			img {
-				width: 100%;
-				height: auto;
-			}
-		}
-	</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Portfolio Website</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-	 <img src = "https://media.giphy.com/media/cfGmVRsJI6wq6noGxP/giphy.gif">
-	<h1>Website Under Construction</h1>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">My Portfolio Website</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/project">Projects</a></li>
+        <li><a href = "/blogs">Blog</a></li>
+        <li><a href = "/achievment">Achievement</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  
+  </nav>
+  <main>
+    <h1>This is my portfolio website</h1>
+    <p>This is where I showcase my work.</p>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a data science student at the ITM University, Gwalior. I am passionate about using data to solve real-world problems. I have experience with a variety of data science tools and techniques, including machine learning, natural language processing, and data visualization. I am also proficient in Python, R, and SQL.</p>
+      <p>In my spare time, I enjoy hiking , biking and camping</p>
+    </section>
+  </main> <br>
 </body>
+<script>
+// This code will add a smooth scroll to the About section
+$('#about').on('click', function() {
+	$('html, body').animate({
+	  scrollTop: $(this).offset().top
+	}, 500);
+  });
+  
+  // This code will add a lightbox to all of the images on the website
+  $('img').each(function() {
+	$(this).on('click', function() {
+	  var img = $(this);
+	  var modal = $('<div class="modal"><img src="' + img.attr('src') + '"></div>');
+	  modal.appendTo('body');
+	  modal.modal({
+		backdrop: true,
+		keyboard: true
+	  });
+	});
+  });
+  
+  // This code will add a counter to the About section
+  var counter = 0;
+
+  
+  
+</script>
 </html>

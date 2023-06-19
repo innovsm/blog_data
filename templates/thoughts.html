@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EDIT/ADD BLOG</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+<form action = "/thoughts" method = "POST">
+    <textarea id = "alfa" name = "thought">
+    </textarea>
+    <input type = "submit" value = "Submit">
+</form>
+<!--
+    DELETING PARTICULAR Blog
+-->
+<form action = "/admin/blog_delete" method = "POST">
+    <!-- dropabble list -->
+    <lable for = "blog_data"> Select Blog to delete </lable>
+    <select name = "blog" id = "blog_data">
+        <option value = "1">Blog 1</option>
+        <option value = "2">Blog 2</option>
+        <option value = "3">Blog 3</option>
+        <option value = "4">Blog 4</option>
+    </select>
+    <input type = "submit">
+</form>
+</body>
+</html>
