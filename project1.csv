@@ -11,3 +11,18 @@ The true power of our Cab Management App lies in its ability to seamlessly assig
 
 
 Not only does the app simplify cab allocation, but it also provides real-time updates and notifications to keep you informed of any changes or updates to the cab assignments. This ensures that you always have the most up-to-date information on which driver is using which cab, allowing for optimal fleet management and coordination",Cab Managment System,cab,https://innovsm-cab-managment-app-x5satw.streamlit.app/
+2,"Introducing the powerful Amazon Product Scraper, a versatile tool built using Python's Request library and BeautifulSoup. This cutting-edge scraper allows you to extract valuable information from Amazon's vast product catalog, providing you with valuable insights and data for your business or personal use.
+
+Powered by the popular Request library, our Amazon Product Scraper seamlessly interacts with Amazon's servers, fetching product pages and retrieving the desired information. Whether you need to gather product details, customer reviews, pricing data, or any other relevant information, our scraper has you covered.
+
+Using BeautifulSoup, a Python library for web scraping, our scraper intelligently parses the HTML structure of Amazon's product pages, extracting the desired data with precision and accuracy. This ensures that you receive clean and structured data, ready to be analyzed and utilized.
+
+To enhance usability and accessibility, we have integrated Streamlit for hosting and frontend capabilities. Streamlit provides a seamless and user-friendly interface, allowing you to interact with the scraper effortlessly. Through Streamlit, you can input search queries, specify the desired product categories, and configure various scraping parameters.
+
+Once the scraper fetches the data from Amazon, it can be presented in a user-friendly manner within the Streamlit frontend. You can visualize the extracted information, sort and filter the results, and export the data for further analysis or integration with your existing systems.
+
+The Amazon Product Scraper offers a range of powerful features and customization options. You can specify the number of products to scrape, set filters based on customer ratings, define price ranges, and even extract additional details such as product images, descriptions, and specifications.
+
+With the ability to scrape data from Amazon's vast catalog, our scraper opens up numerous opportunities for business insights, market research, competitor analysis, and more. Gain a competitive edge by leveraging the wealth of information available on Amazon and make data-driven decisions for your business.
+
+Furthermore, our Amazon Product Scraper is designed to be efficient and scalable. It can handle a large number of requests while ensuring optimal performance and reliability. Whether you need to scrape a few product pages or thousands, our scraper can handle the workload effortlessly",Amazon Scraper,amazon_scraper,https://innovsm-amazon-scraper-main-4qrdy9.streamlit.app/
